@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удаление сотрудника</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #FFD700;
+            padding: 10px;
+            color: #000;
+        }
+        .sidebar {
+            width: 200px;
+            float: left;
+            background-color: #FFFACD;
+            padding: 10px;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 10px;
+        }
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Удаление сотрудника</h1>
+    </div>
+    <div class="sidebar">
+        <h3>Главная</h3>
+        <h3>Распорядок</h3>
+        <a href="{% url 'employee_list' %}" class="delete-button">Отмена</a>
+    </div>
+    <div class="content">
+        <h2>Вы уверены, что хотите удалить сотрудника {{ employee.full_name }}?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Удалить</button>
+        </form>
+    </div>
+</body>
+</html>
